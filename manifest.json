@@ -1,0 +1,17 @@
+{
+   "background_page": "background.html",
+   "chrome_url_overrides": {
+      "newtab": "CloudTab.html"
+   },
+   "description": "Its replacement to the chromes New Tab UI with cloud of Tag UI.",
+   "icons": {
+      "128": "128X128.png",
+      "16": "16X16.png",
+      "48": "48X48.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDQ7gla1wrQMnD45XoJ6OTwxl+EdnBjU56alLAxrRlCplqtocwEZlCuoD2v3yO22ZVUNlxSXIqltgfToYq3KNp+I1BHOtfQFq6KyV3JAepiwffUPT1TKMPElTkR+TUgdEV8e/IOgKh7X0aY9rrmalPm9z7FpOtGWczR6wUeuf2RgwIDAQAB",
+   "name": "Cloud Tab",
+   "permissions": [ "tabs", "management" ],
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "3.0"
+}

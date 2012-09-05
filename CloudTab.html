@@ -1,0 +1,116 @@
+<html>
+ <head>
+  <title>Cloud Tab</title>
+ <link rel="stylesheet" type="text/css" href="jqcontextmenu.css" />
+
+  <style>
+
+img.link{
+   position:absolute;
+   top:25%;
+   left:5%;
+   margin-top:-25px;
+   margin-left:-25px;
+}
+
+div.myCanvasContainer12
+{
+left:30%;
+top:30%;
+}
+
+A.link {
+  color: #0000;
+  font-size: .8em;
+  font-weight:bold;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  
+  
+}
+div.menu
+{
+text-align:right;
+}
+#content_form{background:#b2b2b2; 
+float:right; 
+padding-left:40px;
+padding-bottom:10px;
+border-right: 4px black solid;
+border-top: 4px black solid;
+border-bottom: 4px black solid;
+border-left: 4px black solid;
+width:200px;
+position: fixed; top: 100px; left: 1150px;  }
+
+label { float: left; width: 150px; }
+input[type=button] { width: 60px; }
+
+
+  </style>
+    <script src="jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="jquery.tagcanvas.min.js" type="text/javascript"></script>
+   <script type="text/javascript" src="jqcontextmenu.js"></script>
+   <script type="text/javascript" src="main.js"></script>
+<script>
+
+
+
+
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+$("#content_form").hide();
+$("#animate").click(function() {
+$("#content_form").show(500);
+    $("#content_form").animate(
+            
+            "slow");
+});
+});
+$(document).ready(function(){
+  $("#animate1").click(function(){
+    $("#content_form").hide(700);
+  }
+  
+
+  
+  );
+});
+</script>
+ 
+ </head>
+ <body background="rsz_background.jpg">
+<div id="main" class="menu" >
+<div >
+<img id="animate" src="rsz_1rsz_add.jpg"></img>
+</div>
+<img src="icon.jpg"  class="link" onclick="return toggleMe('apps','#myCanvas1','#myCanvasContainer1','Apptags')">
+<div  id="apps" style="display:none">
+    <div id="myCanvasContainer1" class="myCanvasContainer12"  >
+      <canvas width="900" height="600" id="myCanvas1" >
+        <p>Anything in here will be replaced on browsers that support the canvas element</p>
+      </canvas>
+    </div>
+    <div id="Apptags" >
+      <ul id="listApptags">
+      <li><A class="myApps" href="https://chrome.google.com/webstore">Chrome Store</A></li>
+      
+      </ul>
+    </div>
+</div>
+</div>
+
+
+<ul id="contextmenu1" class="jqcontextmenu">
+<A class="myApps" href="#"><b>Click to UnInstall</b></A>
+</ul>
+<div id="content_form">
+<Label ><B>Tag Name</B></Label><input type="text" id="tagName" width="150px" /></br>
+<Label ><B>Tag URL</B></Label>  <input type="text" id="tagURL" width="150px" /></br></br>
+<input type="button"   id="add" value="ADD"class="button" onClick= "return addcustomtag()" />&nbsp;&nbsp;
+<input type="button" id="animate1"  value="CLOSE" class="button"  />
+
+ 
+ </div>
+ </body>
+</html>
