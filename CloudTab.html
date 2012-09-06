@@ -1,9 +1,9 @@
 <html>
- <head>
-  <title>Cloud Tab</title>
+Â <head>
+Â  <title>Cloud Tab</title>
  <link rel="stylesheet" type="text/css" href="jqcontextmenu.css" />
 
-  <style>
+Â  <style>
 
 img.link{
    position:absolute;
@@ -39,16 +39,16 @@ border-right: 4px black solid;
 border-top: 4px black solid;
 border-bottom: 4px black solid;
 border-left: 4px black solid;
-width:200px;
+width:15%;
 position: fixed; top: 100px; left: 1150px;  }
 
-label { float: left; width: 150px; }
+label { float: left; width: 170px; }
 input[type=button] { width: 60px; }
 
 
-  </style>
-    <script src="jquery-1.7.2.min.js" type="text/javascript"></script>
-    <script src="jquery.tagcanvas.min.js" type="text/javascript"></script>
+Â  </style>
+Â  Â  <script src="jquery-1.7.2.min.js" type="text/javascript"></script>
+Â  Â  <script src="jquery.tagcanvas.min.js" type="text/javascript"></script>
    <script type="text/javascript" src="jqcontextmenu.js"></script>
    <script type="text/javascript" src="main.js"></script>
 <script>
@@ -78,25 +78,25 @@ $(document).ready(function(){
 });
 </script>
  
- </head>
- <body background="rsz_background.jpg">
+Â </head>
+Â <body background="rsz_background.jpg">
 <div id="main" class="menu" >
 <div >
 <img id="animate" src="rsz_1rsz_add.jpg"></img>
 </div>
 <img src="icon.jpg"  class="link" onclick="return toggleMe('apps','#myCanvas1','#myCanvasContainer1','Apptags')">
 <div  id="apps" style="display:none">
-    <div id="myCanvasContainer1" class="myCanvasContainer12"  >
-      <canvas width="900" height="600" id="myCanvas1" >
-        <p>Anything in here will be replaced on browsers that support the canvas element</p>
-      </canvas>
-    </div>
-    <div id="Apptags" >
-      <ul id="listApptags">
+Â  Â  <div id="myCanvasContainer1" class="myCanvasContainer12" Â >
+Â  Â  Â  <canvas width="900" height="600" id="myCanvas1" >
+Â  Â  Â  Â  <p>Anything in here will be replaced on browsers that support the canvas element</p>
+Â  Â  Â  </canvas>
+Â  Â  </div>
+Â  Â  <div id="Apptags" >
+Â  Â  Â  <ul id="listApptags">
       <li><A class="myApps" href="https://chrome.google.com/webstore">Chrome Store</A></li>
       
-      </ul>
-    </div>
+Â  Â  Â  </ul>
+Â  Â  </div>
 </div>
 </div>
 
@@ -105,12 +105,14 @@ $(document).ready(function(){
 <A class="myApps" href="#"><b>Click to UnInstall</b></A>
 </ul>
 <div id="content_form">
-<Label ><B>Tag Name</B></Label><input type="text" id="tagName" width="150px" /></br>
+<Label ><B>Tag Name</B></Label><input type="text" id="tagName" width="15%" /></br>
 <Label ><B>Tag URL</B></Label>  <input type="text" id="tagURL" width="150px" /></br></br>
 <input type="button"   id="add" value="ADD"class="button" onClick= "return addcustomtag()" />&nbsp;&nbsp;
-<input type="button" id="animate1"  value="CLOSE" class="button"  />
+<input type="button" id="animate1"  value="CLOSE" class="button"  />&nbsp;&nbsp;
+<input type="button" id="delete"  value="DELETE" class="button"  onClick="return deleteCustomTag()" />
+
 
  
  </div>
- </body>
+Â </body>
 </html>
