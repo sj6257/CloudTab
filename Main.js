@@ -6,24 +6,24 @@ var tag="f";
 $(document).ready(function() {
 
    
-    chrome.management.getAll(function(info) {
-    appCount = 0;
-    for (var i = 0; i < info.length; i++) {if (info[i].isApp) {appCount++;}}
+    chrome.management.getAll(function(info) {
+    appCount = 0;
+    for (var i = 0; i < info.length; i++) {if (info[i].isApp) {appCount++;}}
 
     // Puts only enabled apps from completeList into appList.
     appList = [];
-    for (var i = 0; i < info.length; i++){
-    var item = info[i];
-    // Skip extensions and disabled apps.
-    if (!item.isApp || !item.enabled) {
-      continue;
-    }
-    appList.push(item);
+    for (var i = 0; i < info.length; i++){
+    var item = info[i];
+    // Skip extensions and disabled apps.
+    if (!item.isApp || !item.enabled) {
+      continue;
+    }
+    appList.push(item);
 	}
    
    var temp="nothing";
    for (var i = 0; i < appList.length; i++) {
-   var item = appList[i];         //we can select many atrributes here
+   var item = appList[i];         //we can select many atrributes here
    tag="<li><a class=\"myApps\" href=\""+item.appLaunchUrl+"\">"+item.name+"</a></li>";
    $("#listApptags").append(tag);
    temp="\"return uninstall\(\'"+item.name+"\'\,\'"+item.id+"\'\)\"";
@@ -38,14 +38,14 @@ $(document).ready(function() {
   
    
   
-});   
-  
+});   
+  
 $(document).ready(function() {
-  
-    $('img.link').addcontextmenu('contextmenu1');
+  
+    $('img.link').addcontextmenu('contextmenu1');
 });
 
-  
+  
 function uninstall(name,id)
 {
 
@@ -80,29 +80,46 @@ var newentry="<li><a  href=\""+b+"\">"+a+"</a></li>";
 $("#listApptags").append(newentry);
 appendToStorage("tag",newentry);
 $("#content_form").hide(700);
+location.reload();
 
 }
 
-  
+
+function deleteCustomTag()
+{
+var a=document.getElementById('tagName').value;
+
+var b=document.getElementById('tagURL').value;
+var newentry="<li><a  href=\""+b+"\">"+a+"</a></li>";
+console.log(newentry);
+//var oldValue=localStorage.getItem(key).replace(newEntry,"");
+var oldValue=localStorage.tag.replace(newentry,"");
+localStorage.setItem("tag",oldValue);
+$("#content_form").hide(700);
+location.reload();
+}
+
+
+
 function disp(b,c,d)
-{   
+{   
   
- 
-        if(!$(b).tagcanvas({
-          textColour: '##000000',
-          outlineColour: '##000000',
-          reverse: true,
-          depth: 0.9,
-          maxSpeed: 0.05
- ,minSpeed:0.03
- ,freezeActive: true
- ,textHeight :25
-        },d)
+ 
+        if(!$(b).tagcanvas({
+          textColour: '##000000',
+          outlineColour: '##000000',
+          reverse: true,
+          depth: 0.9,
+          maxSpeed: 0.05
+ ,minSpeed:0.03
+ ,freezeActive: true
+ ,textHeight :25
+        },d)
 ) {
-          // something went wrong, hide the canvas container
-          $(c).hide();
-        }
- }     
+          // something went wrong, hide the canvas container
+          $(c).hide();
+        }
+ }     
 
 function toggleMe(a,b,c,d){
  
