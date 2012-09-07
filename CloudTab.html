@@ -43,7 +43,37 @@ width:200px;
 position: fixed; top: 100px; left: 1150px;  }
 
 label { float: left; width: 150px; }
-input[type=button] { width: 60px; }
+input[type=button] { width: 75px; }
+
+.button {
+ -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #000000), color-stop(1, #ffffff) );
+	background:-moz-linear-gradient( center top, #000000 5%, #ffffff 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#ffffff');
+	background-color:#000000;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#ffffff;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:3px 12px;
+	text-decoration:none;
+	text-shadow:1px 1px 49px #ffffff;
+}.button:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #000000) );
+	background:-moz-linear-gradient( center top, #ffffff 5%, #000000 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#000000');
+	background-color:#ffffff;
+}.button:active {
+	position:relative;
+	top:1px;
+}
 
 
   </style>
@@ -60,29 +90,51 @@ input[type=button] { width: 60px; }
 <script type="text/javascript">
 $(document).ready(function() {
 $("#content_form").hide();
-$("#animate").click(function() {
+//function for opening dialog box when user  press plus button
+$("#plus").click(function() {
 $("#content_form").show(500);
-    $("#content_form").animate(
-            
-            "slow");
+$("#lblURL").show();
+$("#tagName").show();
+$("#tagURL").show();
+$("#add").show();
+$("#animate1").show();
+   $("#btnDelete").hide();
 });
-});
-$(document).ready(function(){
-  $("#animate1").click(function(){
-    $("#content_form").hide(700);
-  }
-  
 
-  
-  );
+//function for opening dialog box when pressing delete button
+
+
+$("#minus").click(function() {
+$("#content_form").show(500);
+   	    
+    $("#tagURL").hide();
+    $("#lblURL").hide();
+    $("#add").hide();
 });
+
+//function for opening dialog box when pressing close button
+
+$("#delete").click(function() {
+$("#content_form").show(500);
+  
+});
+
+//for hidding dialog box
+
+$("#animate1").click(function(){
+    $("#content_form").hide(700);
+  });
+});
+
 </script>
  
  </head>
  <body background="rsz_background.jpg">
 <div id="main" class="menu" >
 <div >
-<img id="animate" src="rsz_1rsz_add.jpg"></img>
+<img id="plus" src="plus.jpg"></img>
+<img id="minus" src="minus.png"></img>
+<img id="delete" src="delete.JPG"></img>
 </div>
 <img src="icon.jpg"  class="link" onclick="return toggleMe('apps','#myCanvas1','#myCanvasContainer1','Apptags')">
 <div  id="apps" style="display:none">
@@ -105,11 +157,11 @@ $(document).ready(function(){
 <A class="myApps" href="#"><b>Click to UnInstall</b></A>
 </ul>
 <div id="content_form">
-<Label ><B>Tag Name</B></Label><input type="text" id="tagName" width="150px" /></br>
-<Label ><B>Tag URL</B></Label>  <input type="text" id="tagURL" width="150px" /></br></br>
-<input type="button"   id="add" value="ADD"class="button" onClick= "return addcustomtag()" />&nbsp;&nbsp;
+<Label id="lblName"><B>Tag Name</B></Label><input type="text" id="tagName" width="150px" /></br>
+<Label id="lblURL"><B>Tag URL</B></Label>  <input type="text" id="tagURL" width="150px" /></br></br>
+<input type="button"   id="add" value="ADD" class="button" onClick= "return addcustomtag()" />&nbsp;&nbsp;
 <input type="button" id="animate1"  value="CLOSE" class="button"  />
-<input type="button" id="delete"  value="DELETE" class="button"  onClick="return deleteCustomTag()" />
+<input type="button" id="btnDelete"  value="DELETE" class="button"  onClick="return deleteCustomTag()" /> 
 
  
  </div>
