@@ -5,7 +5,7 @@ var tag="f";
 
 $(document).ready(function() {
 
-   
+  
     chrome.management.getAll(function(info) {
     appCount = 0;
     for (var i = 0; i < info.length; i++) {if (info[i].isApp) {appCount++;}}
@@ -76,7 +76,9 @@ var a=document.getElementById('tagName').value;
 
 var b=document.getElementById('tagURL').value;
 var newentry="<li><a  href=\""+b+"\">"+a+"</a></li>";
-//localStorage["tag"]= newentry;
+
+localStorage[a]= newentry;
+
 $("#listApptags").append(newentry);
 appendToStorage("tag",newentry);
 $("#content_form").hide(700);
@@ -89,8 +91,8 @@ function deleteCustomTag()
 {
 var a=document.getElementById('tagName').value;
 
-var b=document.getElementById('tagURL').value;
-var newentry="<li><a  href=\""+b+"\">"+a+"</a></li>";
+//var newentry="<li><a  href=\""+b+"\">"+a+"</a></li>";
+var newentry=localStorage.getItem(a);
 console.log(newentry);
 //var oldValue=localStorage.getItem(key).replace(newEntry,"");
 var oldValue=localStorage.tag.replace(newentry,"");
