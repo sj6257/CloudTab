@@ -2,12 +2,15 @@
 var appList = [];
 var appCount = 0;
 var tag="f";
-
+var wholeInfo="";
 $(document).ready(function() {
 
+	
   
     chrome.management.getAll(function(info) {
     appCount = 0;
+	wholeInfo=info;
+	console.log(info);
     for (var i = 0; i < info.length; i++) {if (info[i].isApp) {appCount++;}}
 
     // Puts only enabled apps from completeList into appList.
@@ -45,7 +48,30 @@ $(document).ready(function() {
     $('img.link').addcontextmenu('contextmenu1');
 });
 
+function googleUninstall()
+{
+ var temp="nothing";
+ var a=document.getElementById('tagName').value;
+
+    for (var i = 0; i < wholeInfo.length; i++) {
+
+    	if (wholeInfo[i].name===a) {
+		uninstall(wholeInfo[i].name,wholeInfo[i].id)
+	//temp="\"return uninstall\(\'"+wholeInfo[i].name+"\'\,\'"+wholeInfo[i].id+"\'\)\"";
+	  break;
+	}
+ 
+
   
+
+
+}
+}
+
+ 
+
+    
+
 function uninstall(name,id)
 {
 
