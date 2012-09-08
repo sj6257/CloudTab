@@ -88,6 +88,8 @@ input[type=button] { width: 75px; }
 
 </script>
 <script type="text/javascript">
+
+
 $(document).ready(function() {
 $("#content_form").hide();
 //function for opening dialog box when user  press plus button
@@ -96,10 +98,7 @@ $("#content_form").show(500);
 $("#lblURL").show();
 $("#tagName").show();
 $("#tagURL").show();
-$("#add").show();
 $("#animate1").show();
-$("#btnDelete").hide();
-$("#btnUninstall").hide();
 });
 
 //function for opening dialog box when pressing delete button
@@ -110,10 +109,7 @@ $("#content_form").show(500);
 $("#lblURL").hide();
 $("#tagName").show();
 $("#tagURL").hide();
-$("#add").hide();
-$("#btnDelete").show();
 $("#animate1").show();
-$("#btnUninstall").hide();
    
 });
 
@@ -124,10 +120,8 @@ $("#content_form").show(500);
 $("#lblURL").hide();
 $("#tagName").show();
 $("#tagURL").hide();
-$("#add").hide();
-$("#btnDelete").hide();
 $("#animate1").show();
-$("#btnUninstall").show();
+
 });
 
 //for hidding dialog box
@@ -143,9 +137,9 @@ $("#animate1").click(function(){
  <body background="rsz_background.jpg">
 <div id="main" class="menu" >
 <div >
-<img id="plus" src="plus.jpg" title="Add Custom Tag"></img>
-<img id="minus" src="minus.jpg" title="Delete Custom Tag"></img>
-<img id="delete" src="delete.JPG" title="Uninstall Default Tag"></img>
+<img id="plus" src="plus.jpg" onClick="return setAction('1')" title="Add Custom Tag"></img>
+<img id="minus" src="minus.png"  onClick="return setAction('2')"  title="Delete Custom Tag"></img>
+<!--<img id="delete" src="delete.JPG" onClick="return setAction('3')"  title="Uninstall Default Tag"></img>-->
 </div>
 <img src="icon.jpg"  class="link" onclick="return toggleMe('apps','#myCanvas1','#myCanvasContainer1','Apptags')">
 <div  id="apps" style="display:none">
@@ -170,10 +164,11 @@ $("#animate1").click(function(){
 <div id="content_form">
 <Label id="lblName"><B>Tag Name</B></Label><input type="text" id="tagName" width="150px" /></br>
 <Label id="lblURL"><B>Tag URL</B></Label>  <input type="text" id="tagURL" width="150px" /></br></br>
-<input type="button"   id="add" value="ADD" class="button" onClick= "return addcustomtag()" />&nbsp;&nbsp;
+<!--<input type="button"   id="add" value="ADD" class="button" onClick= "return addcustomtag()" />&nbsp;&nbsp;-->
+<input type ="button"  id="ok"  value="OK" class="button" onClick="return takeAction()"/>
 <input type="button" id="animate1"  value="CLOSE" class="button"  />
-<input type="button" id="btnDelete"  value="DELETE" class="button"  onClick="return deleteCustomTag()" /> 
-<input type="button" id="btnUninstall"  value="UNINSTALL" class="button"  onClick="return googleUninstall()" />
+<!--<input type="button" id="btnDelete"  value="DELETE" class="button"  onClick="return deleteCustomTag()" /> 
+<input type="button" id="btnUninstall"  value="UNINSTALL" class="button"  onClick="return googleUninstall()" /> -->
 
  
  </div>
