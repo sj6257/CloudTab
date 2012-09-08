@@ -7,7 +7,7 @@
 
 img.link{
    position:absolute;
-   top:25%;
+   top:25%;	
    left:5%;
    margin-top:-25px;
    margin-left:-25px;
@@ -39,7 +39,7 @@ border-right: 4px black solid;
 border-top: 4px black solid;
 border-bottom: 4px black solid;
 border-left: 4px black solid;
-width:200px;
+width:13%;
 position: fixed; top: 100px; left: 1150px;  }
 
 label { float: left; width: 150px; }
@@ -98,7 +98,8 @@ $("#tagName").show();
 $("#tagURL").show();
 $("#add").show();
 $("#animate1").show();
-   $("#btnDelete").hide();
+$("#btnDelete").hide();
+$("#btnUninstall").hide();
 });
 
 //function for opening dialog box when pressing delete button
@@ -106,17 +107,27 @@ $("#animate1").show();
 
 $("#minus").click(function() {
 $("#content_form").show(500);
-   	    
-    $("#tagURL").hide();
-    $("#lblURL").hide();
-    $("#add").hide();
+$("#lblURL").hide();
+$("#tagName").show();
+$("#tagURL").hide();
+$("#add").hide();
+$("#btnDelete").show();
+$("#animate1").show();
+$("#btnUninstall").hide();
+   
 });
 
 //function for opening dialog box when pressing close button
 
 $("#delete").click(function() {
 $("#content_form").show(500);
-  
+$("#lblURL").hide();
+$("#tagName").show();
+$("#tagURL").hide();
+$("#add").hide();
+$("#btnDelete").hide();
+$("#animate1").show();
+$("#btnUninstall").show();
 });
 
 //for hidding dialog box
@@ -132,9 +143,9 @@ $("#animate1").click(function(){
  <body background="rsz_background.jpg">
 <div id="main" class="menu" >
 <div >
-<img id="plus" src="plus.jpg"></img>
-<img id="minus" src="minus.png"></img>
-<img id="delete" src="delete.JPG"></img>
+<img id="plus" src="plus.jpg" title="Add Custom Tag"></img>
+<img id="minus" src="minus.jpg" title="Delete Custom Tag"></img>
+<img id="delete" src="delete.JPG" title="Uninstall Default Tag"></img>
 </div>
 <img src="icon.jpg"  class="link" onclick="return toggleMe('apps','#myCanvas1','#myCanvasContainer1','Apptags')">
 <div  id="apps" style="display:none">
@@ -162,6 +173,7 @@ $("#animate1").click(function(){
 <input type="button"   id="add" value="ADD" class="button" onClick= "return addcustomtag()" />&nbsp;&nbsp;
 <input type="button" id="animate1"  value="CLOSE" class="button"  />
 <input type="button" id="btnDelete"  value="DELETE" class="button"  onClick="return deleteCustomTag()" /> 
+<input type="button" id="btnUninstall"  value="UNINSTALL" class="button"  onClick="return googleUninstall()" />
 
  
  </div>
