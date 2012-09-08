@@ -3,10 +3,11 @@ var appList = [];
 var appCount = 0;
 var tag="f";
 var wholeInfo="";
+var action=0;
 $(document).ready(function() {
 
-	
-  
+
+   
     chrome.management.getAll(function(info) {
     appCount = 0;
 	wholeInfo=info;
@@ -69,6 +70,35 @@ function googleUninstall()
 }
 
  
+ 
+ 
+// set actions here
+function setAction(value)
+{
+action=value;
+}
+ 
+ 
+ function takeAction()
+ {
+ // 1 to Add    custom tag
+if (action==1)
+{
+addcustomtag();
+}
+// 2 to remove custom tag or Uninstall App
+else if(action==2)
+{
+deleteCustomTag();
+
+}
+//do nothing
+else
+{
+console.log("Invalid Option received");
+}
+ }
+ 
 
     
 
@@ -119,12 +149,19 @@ var a=document.getElementById('tagName').value;
 
 //var newentry="<li><a  href=\""+b+"\">"+a+"</a></li>";
 var newentry=localStorage.getItem(a);
+if(newentry)
+{
 console.log(newentry);
 //var oldValue=localStorage.getItem(key).replace(newEntry,"");
 var oldValue=localStorage.tag.replace(newentry,"");
 localStorage.setItem("tag",oldValue);
 $("#content_form").hide(700);
 location.reload();
+}
+else
+{
+googleUninstall();
+}
 }
 
 
