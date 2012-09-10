@@ -6,8 +6,7 @@ var wholeInfo="";
 var action=0;
 $(document).ready(function() {
 
-
-   
+    <!--localStorage.clear();-->
     chrome.management.getAll(function(info) {
     appCount = 0;
 	wholeInfo=info;
@@ -36,7 +35,7 @@ $(document).ready(function() {
    console.log(tag);
     }
     
-  $("#listApptags").append(localStorage.tag)
+  $("#listApptags").append(localStorage.tag);
 
   });
   
@@ -44,29 +43,32 @@ $(document).ready(function() {
   
 });   
   
-$(document).ready(function() {
-  
-    $('img.link').addcontextmenu('contextmenu1');
-});
 
 function googleUninstall()
 {
  var temp="nothing";
  var a=document.getElementById('tagName').value;
-
+ var flg=0;
+  
+ if(a)
+ {
     for (var i = 0; i < wholeInfo.length; i++) {
 
     	if (wholeInfo[i].name===a) {
-		uninstall(wholeInfo[i].name,wholeInfo[i].id)
+		flg=uninstall(wholeInfo[i].name,wholeInfo[i].id);
 	//temp="\"return uninstall\(\'"+wholeInfo[i].name+"\'\,\'"+wholeInfo[i].id+"\'\)\"";
 	  break;
-	}
+	                                }
+									
+                                                  }
+ }
+if(flg==0)
+ {
+ alert("Tag/App Not Found..!");
+ clearText();
  
+ }
 
-  
-
-
-}
 }
 
  
@@ -96,6 +98,7 @@ deleteCustomTag();
 else
 {
 console.log("Invalid Option received");
+
 }
  }
  
@@ -105,7 +108,10 @@ console.log("Invalid Option received");
 function uninstall(name,id)
 {
 
-chrome.management.uninstall(id, function(){alert(name+" Application Unistalled"); location.reload();});
+chrome.management.uninstall(id, function(){alert(name+" Application Unistalled") ; location.reload();})
+
+return 1;
+
 
 }
 
@@ -131,6 +137,10 @@ function addcustomtag()
 var a=document.getElementById('tagName').value;
 
 var b=document.getElementById('tagURL').value;
+if(!localStorage.getItem(a))
+{
+if(a)
+{
 var newentry="<li><a  href=\""+b+"\">"+a+"</a></li>";
 
 localStorage[a]= newentry;
@@ -139,29 +149,60 @@ $("#listApptags").append(newentry);
 appendToStorage("tag",newentry);
 $("#content_form").hide(700);
 location.reload();
+}
+else
+{
+alert("TagName cant be empty ");
+clearText();
+}
 
+}
+else
+{
+alert("TagName Already Exist..! Please Choose Another Tag Name..! ");
+clearText();
+
+}
 }
 
 
 function deleteCustomTag()
 {
 var a=document.getElementById('tagName').value;
-
+var tr=-1;
+console.log(a);
 //var newentry="<li><a  href=\""+b+"\">"+a+"</a></li>";
 var newentry=localStorage.getItem(a);
-if(newentry)
+console.log("1");
+if(a)
 {
 console.log(newentry);
 //var oldValue=localStorage.getItem(key).replace(newEntry,"");
-var oldValue=localStorage.tag.replace(newentry,"");
-localStorage.setItem("tag",oldValue);
-$("#content_form").hide(700);
-location.reload();
+   
+   tr=localStorage.tag.search(a);
+	if (tr!==-1)
+	{
+	var oldValue=localStorage.tag.replace(newentry,"");
+	localStorage.setItem("tag",oldValue);
+	localStorage.removeItem(a);
+	$("#content_form").hide(700);
+	location.reload();
+	}
+	else
+	{
+	googleUninstall();
+	}
+
 }
 else
 {
-googleUninstall();
+console.log("2");
+alert("Please Enter Valid Tag/App Name.Tag Names are Case Sensitive..!");
+clearText();
 }
+
+console.log("3");
+
 }
 
 
@@ -186,6 +227,14 @@ function disp(b,c,d)
         }
  }     
 
+ 
+ function clearText()
+ {
+ $("#tagName").val('');
+ $("#tagURL").val('');
+ }
+ 
+ 
 function toggleMe(a,b,c,d){
  
   switch(a)
